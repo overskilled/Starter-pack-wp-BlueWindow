@@ -4,17 +4,17 @@
 }
 
 .spwpbw-date-today {
-    color: blue;
+    
     font-weight: bold;
 }
 
 .spwpbw-date-month {
-    color: green;
+
     font-weight: italic;
 }
 
 .spwpbw-date-year {
-    color: red;
+
     font-weight: underlined;
 }
 
