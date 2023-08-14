@@ -4,7 +4,7 @@
 }
 
 .spwpbw-date-today {
-    
+
     font-weight: bold;
 }
 
@@ -18,4 +18,45 @@
     font-weight: underlined;
 }
 
+
+.container {
+    background-color: #3943cf;
+    border-radius: 8px solid-black;
+    padding: 10px;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center
+}
+
+table{
+    border-spacing: 10px;
+}
+
+
+tr{
+    height: 28px;
+    width: 100px;
+}
+
+
+.content-1,.content-2{
+    float:left;
+}
+.content-1 {
+    border-radius: 3px;
+    height: 28px;
+    width: 100px;
+}
+.content-2{
+    border-radius: 3px;
+    border: 1px solid #11af39;
+    width: 100px;
+    top:10px;
+}
+
+.wager-amount{
+    color:red;
+}
 

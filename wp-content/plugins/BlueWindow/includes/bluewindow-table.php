@@ -1,41 +1,35 @@
 <?php
 //function pour generer le tableau
-function spwpbw_generate_table () {
-    $table_data = array(
-        array(
-            'Cellule 1, Ligne 1',
-            'Cellule 2, Ligne 1',
-        ),
-        array(
-            'Cellule 1, Ligne 2',
-            'Cellule 2, Ligne 2',
-        ),
-        array(
-            'Cellule 1, Ligne 3',
-            'Cellule 2, Ligne 3',
-        ),
-        array(
-            'Cellule 1, Ligne 4',
-            'Cellule 2, Ligne 4',
-        ),
-    );
+function spwpbw_table_shortcode ($atts, $content = null) {
+    //definir les attribute du tableau
+   $atts = shortcode_atts(array (
+    'columns' => 2,
+    'rows'     => 4,
+    'border'  => 1,
+   ), $atts);
 
-    //Generer le code HTML du tableau
-    $table_html = '<table>';
-    foreach ($table_data as $row) {
+   //diviser en lignes et colonnes
+   $rows       = explode("\n", $content);
+   $table_data = array();
+   foreach ($rows as $row) {
+    $table_data[] = explode(",", $row);
+   }
+
+   //Generer le tableau
+   $table_html = '<table border"' . $atts['border'] . '">';
+   for ($i = 0; $i < $atts['rows']; $i++) {
         $table_html .= '<tr>';
-        foreach ($row as $cell) {
-            $table_html .= '<td>' . $cell . '</td>';
+        for ($j = 0; $j < $atts['columns']; $j++) {
+            if (isset($table_data[$i][$j])) {
+                $table_html .= '<td>' . $table_data[$i][$j] . '</td>';
+            } else {
+                $table_html .= '<td></td>';
+            }
         }
         $table_html .= '</tr>';
-    }
-    $table_html .= '</table>';
+   }
+   $table_html .= '</table>';
 
-    return $table_html;
-}
-
-//Shortcode pour generer le tableau
-function spwpbw_table_shortcode() {
-    return spwpbw_generate_table();
+   return $table_html;
 }
 add_shortcode('table', 'spwpbw_table_shortcode');

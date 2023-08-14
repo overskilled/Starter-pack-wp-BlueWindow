@@ -19,11 +19,6 @@ add_action('wp_enqueue_scripts', 'spwpbw_enqueue_styles');
 // Empêcher l'accès direct au fichier
 defined( 'ABSPATH' ) || exit;
 
-function spwpbw_uninstall() {
-    wp_redirect(admin_url('plugins.php'));
-    exit();
-}
-register_uninstall_hook( __FILE__, 'spwpbw_uninstall' );
 
 // Ajout de l'icône dans le menu wp-admin
 function spwpbw_add_menu_icon() {
@@ -53,4 +48,6 @@ function spwpbw_render_dashboard() {
 require_once(plugin_dir_path(__FILE__) . 'includes/bluewindow-dates.php');
 require_once(plugin_dir_path(__FILE__) . 'includes/bluewindow-time.php');
 require_once(plugin_dir_path(__FILE__) . 'includes/bluewindow-table.php');
+require_once(plugin_dir_path(__FILE__) . 'includes/bluewindow-wager.php');
+require_once(plugin_dir_path(__FILE__) . 'includes/bluewindow-table-of-contents.php') ;
 ?>
